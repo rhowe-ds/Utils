@@ -5,7 +5,7 @@ namespace tests\rhowe\ArrayFunctions;
 use rhowe\ArrayFunctions\SplitArray;
 use PHPUnit\Framework\TestCase;
 
-class ArraySplitTest extends TestCase{
+class SplitArrayTest extends TestCase{
 
     public function splitRoundRobinDataProvider(): array {
         return [

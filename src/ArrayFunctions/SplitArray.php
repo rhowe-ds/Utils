@@ -27,6 +27,7 @@ class SplitArray {
                 $line_count = (int) ceil(count($sourceArray) / ($splits - $i));
             }
         }
+
         return $return;
     }
 }
