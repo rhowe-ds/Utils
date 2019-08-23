@@ -1,0 +1,22 @@
+{
+    "name": "rhowe/scratch",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^7.5",
+        "symfony/var-dumper": "^4.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Howe",
+            "email": "rhowe@truecar.com"
+        }
+    ],
+    
+    "autoload": {
+        "psr-4": {
+            "rhowe\\": "src/"
+        }
+    },    
+    "require": {}
+}
