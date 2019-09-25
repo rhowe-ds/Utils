@@ -3,8 +3,22 @@ namespace rhowe\ArrayFunctions;
 
 class SplitArray {
 
-    public static function splitMostEvent(int $splits, array $sourceArray): array{
-        $per_line = (int) floor(count($sourceArray) / ((count($sourceArray) % $splits) === 0 ? $splits : $splits - 1));
+    /**
+     * This distribution will create the most even retured elements, with the remainder going into the final element
+     *
+     * @param int $splits
+     * @param array $sourceArray
+     * @return array
+     */
+    public static function maxEvenDistribution(int $splits, array $sourceArray): array {
+        if ($splits === 1) {
+            return [$sourceArray];
+        }
+        if ($splits === 2) {
+            $per_line = (int)floor(count($sourceArray) / $splits);
+        } else {
+            $per_line = (int)floor(count($sourceArray) / ((count($sourceArray) % $splits) === 0 ? $splits : $splits - 1));
+        }
         $return = [];
     
         for($i = 1; $i < $splits; $i++){
@@ -15,7 +29,14 @@ class SplitArray {
         return $return;
     }
 
-    public static function splitRoundRobin(int $splits, array $sourceArray): array{
+    /**
+     * This distribution will evenly distribute the remainder items starting with the first element
+     *
+     * @param int $splits
+     * @param array $sourceArray
+     * @return array
+     */
+    public static function mostEvenDistribution(int $splits, array $sourceArray): array {
         if($splits === 1) { return [$sourceArray]; }
         $line_count = (int)ceil((count($sourceArray) / $splits));
         $return = [];
