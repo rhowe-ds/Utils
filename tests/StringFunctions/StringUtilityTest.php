@@ -156,6 +156,91 @@ class StringUtilityTest extends TestCase {
         ];
     }
 
+    public function checkSecondTierModelCodeDataProvider() {
+        return [
+            /* input, expected */
+            ['2 Series', false],
+            ['2 Series', false],
+            ['2 Series', false],
+            ['2 Series', false],
+            ['2 Series', false],
+            ['2 Series', false],
+            ['2 Series', false],
+            ['2 Series', false],
+            ['M2', true],
+            ['3 Series', false],
+            ['3 Series', false],
+            ['4 Series', false],
+            ['4 Series', false],
+            ['4 Series', false],
+            ['4 Series', false],
+            ['M4', true],
+            ['4 Series', false],
+            ['4 Series', false],
+            ['M4', true],
+            ['4 Series', false],
+            ['4 Series', false],
+            ['4 Series', false],
+            ['4 Series', false],
+            ['4 Series', false],
+            ['4 Series', false],
+            ['M4', true],
+            ['5 Series', false],
+            ['5 Series', false],
+            ['5 Series', false],
+            ['5 Series', false],
+            ['M5', true],
+            ['5 Series', false],
+            ['5 Series', false],
+            ['5 Series', false],
+            ['M5', true],
+            ['6 Series', true],
+            ['6 Series', true],
+            ['6 Series', true],
+            ['M6', true],
+            ['6 Series', true],
+            ['B6', true],
+            ['6 Series', true],
+            ['7 Series', true],
+            ['7 Series', true],
+            ['7 Series', true],
+            ['B7', true],
+            ['7 Series', true],
+            ['7 Series', true],
+            ['7 Series', true],
+            ['8 Series', true],
+            ['8 Series', true],
+            ['i3', false],
+            ['i3', false],
+            ['i8', true],
+            ['i3', false],
+            ['i3', false],
+            ['i8', true],
+            ['X7', true],
+            ['X7', true],
+            ['3 Series', false],
+            ['3 Series', false],
+            ['3 Series', false],
+            ['X1', false],
+            ['X1', false],
+            ['X3', false],
+            ['X3', false],
+            ['X5', false],
+            ['X5', false],
+            ['X6', true],
+            ['X6', true],
+            ['X6', true],
+            ['X3', false],
+            ['X4', false],
+            ['X6', true],
+            ['X4', false],
+            ['X2', false],
+            ['X2', false],
+            ['X2', false],
+            ['Z4', false]
+        ];
+    }
+
     /**
      * @test
      * @dataProvider csvToAssociativeArrayDataProvider
@@ -177,6 +262,17 @@ class StringUtilityTest extends TestCase {
      */
     public function uniqueIndexValues(array $input, array $expected) {
         $actual = StringUtility::uniqueIndexValues($input);
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @test
+     * @dataProvider checkSecondTierModelCodeDataProvider
+     * @param string $input
+     * @param bool $expected
+     */
+    public function checkSecondTierModelCode(string $input, bool $expected) {
+        $actual = StringUtility::checkSecondTierModelCode($input);
         $this->assertEquals($expected, $actual);
     }
 }

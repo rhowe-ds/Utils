@@ -59,4 +59,8 @@ class StringUtility {
         }
         return self::uniqueIndexValues($results, ++$step);
     }
+
+    public static function checkSecondTierModelCode($model) {
+        return (bool)preg_match('/(X[6-9]|[6-9]\ Series|M\d|i[6-9]|B[6-9])/i', $model);
+    }
 }
