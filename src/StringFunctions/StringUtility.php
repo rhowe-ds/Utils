@@ -1,10 +1,5 @@
 <?php
-
-
 namespace rhowe\StringFunctions;
-
-
-use phpDocumentor\Reflection\DocBlock\Tags\Param;
 
 class StringUtility {
 
@@ -22,7 +17,7 @@ class StringUtility {
      * @return array
      * @throws \Exception when an key values is empty
      */
-    public static function csvToAssociativeArray(array $input) {
+    public static function csvToAssociativeArray(array $input): array {
         $result = array_map('str_getcsv', $input);
         $header = self::uniqueIndexValues($result[0]);
         array_walk($result, function (&$a) use ($header) {
@@ -39,7 +34,7 @@ class StringUtility {
      * @return array
      * @throws \Exception when an empty index value is encountered
      */
-    public static function uniqueIndexValues(array $input, int $step = 0) {
+    public static function uniqueIndexValues(array $input, int $step = 0): array {
         if ($step === self::MAX_RECURSIVE_STEP) return $input;
         $unique = array_unique($input);
         if (count($unique) === count($input)) return $input;
@@ -60,7 +55,7 @@ class StringUtility {
         return self::uniqueIndexValues($results, ++$step);
     }
 
-    public static function checkSecondTierModelCode($model) {
+    public static function checkSecondTierModelCode($model): bool {
         return (bool)preg_match('/(X[6-9]|[6-9]\ Series|M\d|i[6-9]|B[6-9])/i', $model);
     }
 }

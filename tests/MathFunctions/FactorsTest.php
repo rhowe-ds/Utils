@@ -79,11 +79,12 @@ class TestGenerateFactors extends TestCase {
      * @dataProvider lessThanOneNumberProvider()
      * @dataProvider primeNumberProvider()       This is turned into negative numbers by the function
      * @dataProvider numberProvider()            This is turned into negative numbers by the function
-     * @expectedException OutOfBoundsException
+     *
      * @test
      * @param int $test_number
      */
     public function testGetLessThanOneFactors($test_number) {
+        $this->expectException(OutOfBoundsException::class);
         if ($test_number > 1) {
             $test_number = -$test_number;
         }
